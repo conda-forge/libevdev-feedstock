@@ -10,7 +10,7 @@ source:
   sha256: 73f215eccbd8233f414737ac06bca2687e67c44b97d2d7576091aa9718551110
 
 build:
-  number: 0
+  number: 1
   skip:
     - not linux
   script:
@@ -27,7 +27,8 @@ requirements:
     - ${{ compiler('c') }}
     - make
     - pkg-config
-    - python
+    # constrained so rattler-build does not expand this into a python variant
+    - python >=3.9
   run_exports:
     - ${{ pin_subpackage('libevdev', upper_bound='x.x') }}
 
